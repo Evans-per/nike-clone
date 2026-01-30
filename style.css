@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #fff;
+}
+
+/* NAVBAR */
+.navbar {
+  height: 70px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  width: 60px;
+}
+
+.nav-center {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-center a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-box span {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search-box input {
+  padding: 8px 12px 8px 30px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+}
+
+/* HERO */
+.hero {
+  height: calc(100vh - 70px);
+  background: url("leb.jpg") center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+}
+
+.hero-content {
+  position: relative;
+  color: #fff;
+  padding-left: 80px;
+}
+
+.hero-content h1 {
+  font-size: 72px;
+  font-weight: 900;
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 12px 26px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.dark {
+  background: #fff;
+}
+
+.btn.outline {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+/* SECTIONS */
+.section {
+  padding: 60px 80px;
+}
+
+.section h2 {
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* SHOP BY SPORT */
+.sport-row {
+  display: flex;
+  gap: 20px;
+}
+
+.sport-card {
+  flex: 1;
+  overflow: hidden;
+}
+
+.sport-card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.sport-card:hover img {
+  transform: scale(1.05);
+}
+
+.sport-card p {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* FEATURED */
+.featured {
+  display: flex;
+  gap: 20px;
+}
+
+.featured-box {
+  flex: 1;
+  overflow: hidden;
+}
+
+.featured-box img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.featured-box:hover img {
+  transform: scale(1.05);
+}
+
+/* SPOTLIGHT */
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.product img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.product:hover img {
+  transform: scale(1.1);
+}
+
+.product p {
+  margin-top: 10px;
+  font-weight: 600;
+}

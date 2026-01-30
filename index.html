@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nike Clone</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{ color:#111; }
+
+/* NAVBAR */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 40px;
+  border-bottom:1px solid #eee;
+}
+.logo{ width:55px; }
+
+.nav-center a{
+  margin:0 14px;
+  text-decoration:none;
+  color:#111;
+  font-weight:700;
+  position:relative;
+  padding-bottom:6px;
+}
+.nav-center a::after{
+  content:"";
+  position:absolute;
+  left:0; bottom:0;
+  width:0; height:2px;
+  background:#111;
+  transition:0.3s;
+}
+.nav-center a:hover::after{ width:100%; }
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+.search-box{
+  display:flex;
+  align-items:center;
+  background:#f5f5f5;
+  padding:6px 12px;
+  border-radius:20px;
+}
+.search-box input{
+  border:none;
+  outline:none;
+  background:transparent;
+  margin-left:8px;
+}
+.nav-icon{ font-size:18px; cursor:pointer; }
+
+/* HERO */
+.hero{
+  position:relative;
+  height:85vh;
+  background:url("leb.jpg") center/cover no-repeat;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+}
+.hero-content{
+  position:relative;
+  text-align:center;
+  color:#fff;
+}
+.hero-content h1{
+  font-size:72px;
+  font-weight:900;
+  margin:20px 0 30px;
+}
+.buttons{
+  display:flex;
+  gap:15px;
+  justify-content:center;
+}
+.btn{
+  padding:12px 28px;
+  border-radius:25px;
+  cursor:pointer;
+  font-size:15px;
+}
+.btn.dark{ background:#111; color:#fff; border:none; }
+.btn.outline{ background:transparent; color:#fff; border:1px solid #fff; }
+
+/* SECTION */
+.section{ padding:70px 40px; }
+.section h2{ font-size:28px; margin-bottom:25px; }
+
+/* COMMON HOVER EFFECT */
+.hover-card{
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+}
+.hover-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform 0.5s ease;
+}
+.hover-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  opacity:0;
+  transition:0.4s;
+}
+.hover-card:hover img{ transform:scale(1.08); }
+.hover-card:hover::after{ opacity:1; }
+
+/* SHOP BY SPORT */
+.sport-row{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+}
+.sport-card{
+  min-width:360px;
+  height:480px;
+}
+.sport-card span{
+  position:absolute;
+  bottom:25px;
+  left:25px;
+  color:#000;
+  font-size:22px;
+  font-weight:bold;
+  z-index:2;
+}
+
+/* FEATURED */
+.featured-row{
+  display:flex;
+  gap:20px;
+}
+.featured-card{
+  width:100%;
+  height:520px;
+}
+
+/* SPOTLIGHT */
+.spotlight{
+  text-align:center;
+  padding:80px 40px;
+}
+.spotlight h1{
+  font-size:56px;
+  font-weight:900;
+}
+.spotlight p{
+  margin:15px 0 50px;
+  color:#555;
+}
+.spotlight-grid{
+  display:grid;
+  grid-template-columns:repeat(8,1fr);
+  gap:30px;
+}
+.spotlight-item{
+  text-align:center;
+}
+.spotlight-item img{
+  width:80px;
+  transition:transform 0.4s;
+}
+.spotlight-item:hover img{
+  transform:translateY(-6px) scale(1.1);
+}
+.spotlight-item span{
+  display:block;
+  margin-top:10px;
+  font-size:14px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+/* VIDEO MODAL */
+.video-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+.video-box{
+  width:70%;
+  height:60%;
+  background:#000;
+  position:relative;
+}
+.video-box iframe{
+  width:100%;
+  height:100%;
+}
+.close-btn{
+  position:absolute;
+  top:-40px;
+  right:0;
+  color:#fff;
+  font-size:30px;
+  cursor:pointer;
+}
+
+/* CART ANIMATION */
+.cart-animate{ animation:pop 0.4s ease; }
+@keyframes pop{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.3);}
+  100%{transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" class="logo">
+
+  <nav class="nav-center">
+    <a href="#">New & Featured</a>
+    <a href="#">Men</a>
+    <a href="#">Women</a>
+    <a href="#">Kids</a>
+    <a href="#">Jordan</a>
+  </nav>
+
+  <div class="nav-right">
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Search">
+    </div>
+    <i class="fa-regular fa-heart nav-icon"></i>
+    <i class="fa-solid fa-bag-shopping nav-icon cart-icon"></i>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p>Only one way to find out.</p>
+    <h1>JUST DO IT.</h1>
+    <div class="buttons">
+      <button class="btn dark">Shop</button>
+      <button class="btn outline" onclick="openVideo()">
+        <i class="fa-solid fa-play"></i> Watch
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP BY SPORT -->
+<section class="section">
+  <h2>Shop By Sport</h2>
+  <div class="sport-row">
+    <div class="sport-card hover-card">
+      <img src="runn.jpg"><span>Running</span>
+    </div>
+    <div class="sport-card hover-card">
+      <img src="tra.avif"><span>Training</span>
+    </div>
+    <div class="sport-card hover-card">
+      <img src="spo.jpg"><span>Sportswear</span>
+    </div>
+    <div class="sport-card hover-card">
+      <img src="foots.jpg"><span>Football</span>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section class="section">
+  <h2>Featured</h2>
+  <div class="featured-row">
+    <div class="featured-card hover-card">
+      <img src="fea1.avif">
+    </div>
+    <div class="featured-card hover-card">
+      <img src="fea2.avif">
+    </div>
+  </div>
+</section>
+
+<!-- SPOTLIGHT -->
+<section class="spotlight">
+  <h1>SPOTLIGHT</h1>
+  <p>Classic silhouettes and cutting-edge innovation to build your game from the ground up.</p>
+
+  <div class="spotlight-grid">
+    <div class="spotlight-item"><img src="j11.avif"><span>Air Jordan 1</span></div>
+    <div class="spotlight-item"><img src="af.avif"><span>Air Force 1</span></div>
+    <div class="spotlight-item"><img src="tees2.avif"><span>Graphic Tees</span></div>
+    <div class="spotlight-item"><img src="pgg.avif"><span>Pegasus 41</span></div>
+    <div class="spotlight-item"><img src="tig2.avif"><span>Tights</span></div>
+    <div class="spotlight-item"><img src="met.avif"><span>Metcon</span></div>
+    <div class="spotlight-item"><img src="jack.avif"><span>Jackets</span></div>
+    <div class="spotlight-item"><img src="quest.avif"><span>Quest</span></div>
+  </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal">
+  <div class="video-box">
+    <span class="close-btn" onclick="closeVideo()">×</span>
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+function openVideo(){
+  document.getElementById("videoModal").style.display="flex";
+}
+function closeVideo(){
+  document.getElementById("videoModal").style.display="none";
+}
+document.querySelector(".cart-icon").addEventListener("click",()=>{
+  const c=document.querySelector(".cart-icon");
+  c.classList.add("cart-animate");
+  setTimeout(()=>c.classList.remove("cart-animate"),400);
+});
+</script>
+
+</body>
+</html>
